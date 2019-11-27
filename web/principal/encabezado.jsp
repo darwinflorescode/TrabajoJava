@@ -47,6 +47,7 @@
         </script>
         <script src="../js/jquery.inputmask.bundle.min.js">
         </script>
+        
     </head>
     <body style="background-color: #fff;">
         <nav class="navbar navbar-default navbar-fixed" role="navigation">

@@ -25,7 +25,7 @@
                                 <div class="input-group">
                                     <div class="form-line">
                                         <label class="control-label">Nombres: <span style="color:red">*</span></label>
-                                        <input autofocus="" type="text" name="nombres" minlength="3" maxlength="50"  class="form-control" required="">
+                                        <input autofocus="" onkeypress="return soloLetras(event)" type="text" name="nombres" minlength="3" maxlength="50"  class="form-control" required="">
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                 <div class="input-group">
                                     <div class="form-line">
                                         <label class="control-label">Apellidos: <span style="color:red">*</span></label>
-                                        <input type="text"  name="apellidos" minlength="3" maxlength="50" class="form-control precios" required="">
+                                        <input type="text" onkeypress="return soloLetras(event)"  name="apellidos" minlength="3" maxlength="50" class="form-control precios" required="">
                                     </div>
                                 </div>
                             </div>                         

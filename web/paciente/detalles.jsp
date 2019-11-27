@@ -94,7 +94,7 @@
 </tr>
 
 <tr style="height: 12px;">
-<td style="width: 137.95px; height: 12px; text-align: right;"><strong>Descuento:</strong></td>
+<td style="width: 137.95px; height: 12px; text-align: right;"><strong>Descuento (20%):</strong></td>
 <td style="width: 605.05px; height: 12px;">&nbsp;&nbsp; $ <%=  registros.get(0).getDescuento()%></td>
 </tr>
 <tr style="height: 12px;">

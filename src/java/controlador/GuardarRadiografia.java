@@ -57,6 +57,18 @@ public class GuardarRadiografia extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            //Enviando los datos a los datos getter and setter
+        Radiografia radio = new Radiografia();
+            radio.setId(id);
+            if (radio.eliminarDatos()) {
+                response.sendRedirect("radiografia/?g=eliminado");//Redireccionando a la mismas pagina 
+            }
+            
+        } catch (Exception e) {
+            response.sendRedirect("radiografia/?g=eliminadoerror");//Redireccionando a la mismas pagina 
+        }
         processRequest(request, response);
     }
 

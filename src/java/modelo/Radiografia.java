@@ -127,4 +127,22 @@ public class Radiografia extends Conexion {
 
         return registros;
     }
+     
+        public boolean eliminarDatos() {
+
+        try {
+            String miQuery = "delete from tb_tipo_radiografia where tipo_id='" + getId() + "'";
+            int estado = 0;
+            state = getConexion().createStatement();
+            estado = state.executeUpdate(miQuery);
+            if (estado == 1) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
 }

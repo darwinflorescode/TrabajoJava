@@ -16,7 +16,17 @@
     registros = consultar.consultarRegistros();
 
 %>
+<script>
+    //Usando libreria datatable para ordenar y buscar los datos en paginacion
+    $(document).ready(function () {
 
+        //datatables
+        table = $('#tb_radiografia').DataTable({
+            "pageLength": 5,
+            "order": [[0, "desc"]]
+        });
+    });
+</script>
 <section class="container-fluid">
     <div class="container-fluid">
 
@@ -52,9 +62,9 @@
                                         <th>Fecha</th>
                                         <th>Referencia</th>
                                         <th>Precio</th>
-                                        <th>Desc.</th>
+                                        <th>Desc. (20%)</th>
                                         <th>Total</th>
-                                        <th width="13%" >Acciones</th>
+                                        <th width="8%" >Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -78,8 +88,7 @@
 
                                         <td>
                                             <a type="button" class="btn btn-info waves-effect" onclick="cargar_detalle(<%= c.getId()%>,<%= c.getRadiologo_id()%>,<%= c.getRadiografia_id()%>);" data-toggle="modal" data-target="#modaldetalle"><i class="fa fa-eye"></i></a>
-                                            <a href="../eliminar.do?id=" onclick="return confirm('¿Está seguro de eliminar este registro?');" class="btn btn-primary waves-effect"><i class="fa fa-edit"></i></a>
-                                            <a href="../eliminar.do?id=" onclick="return confirm('¿Está seguro de eliminar este registro?');" class="btn btn-danger waves-effect"><i class="fa fa-trash-o"></i></a>
+                                            <a href="../GuardarPaciente?id=<%=  c.getId()%>" onclick="return confirm('¿Está seguro de eliminar este registro?');" class="btn btn-danger waves-effect"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
 
@@ -124,7 +133,7 @@
 
 
     function calcular_descuento() {
-        var TotalSuma = 0, descuento = 0;
+        var TotalSuma = 0.0, descuento = 0.0;
         var idradiografia = document.getElementById('tipo_radiografia').value;
         var referencia = document.getElementById('referencia').value;
         if (idradiografia != null && referencia != null) {
@@ -146,15 +155,7 @@
 
 
 
-//Usando libreria datatable para ordenar y buscar los datos en paginacion
-    $(document).ready(function () {
 
-        //datatables
-        table = $('#tb_radiografia').DataTable({
-            "pageLength": 5,
-            "order": [[0, "desc"]]
-        });
-    });
 
 
 </script>
@@ -180,60 +181,6 @@
     ;
 </script>
 
-<%     if (request.getParameter("g") != null) { //Verificar que el parametro venga lleno
-        if (request.getParameter("g").equals("exito")) {//parametro para mostrar el mensaje correspondiente
-
-%>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-success">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Datos Almacenados Correctamente</div>');
-
-        window.setTimeout(function () {
-            $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-
-<%} else if (request.getParameter("g").equals("vacio")) {
-%>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-warning">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Datos Vacios. Complete</div>');
-
-        window.setTimeout(function () {
-            $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-<% } else {%>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-danger">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Ha ocurrido un error, si este persiste comuniquese con los desarrolladores</div>');
-
-        window.setTimeout(function () {
-            $(".alert-danger").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-<%
-        }
-    }
-%>
 
 <%@include file="./modales.jsp" %>
 <%@include file="../principal/pie.jsp" %>

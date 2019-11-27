@@ -27,6 +27,14 @@
     SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
     String currentDate = ft.format(dNow);
 %>
+
+<script>
+      $(function($){
+
+  $("#codigo").mask("**-99999");
+});
+     
+    </script>
 <div id="modaldetalle" class="modal fade" style="display: none;">
     <div class="modal-dialog  modal-lg">
         <div class="modal-content">
@@ -62,7 +70,7 @@
                 <br>
             </div>
             <div class="modal-body">
-                <form class="formNormal" id="formulario" autocomplete="off" method="POST" action="../guardar.do?paci" >
+                <form class="formNormal" id="formulario" autocomplete="off" method="POST" action="../GuardarPaciente" >
                     <div style="text-align: right; float: right">
                         <span style="color:red">*</span> Datos Obligatorios
                     </div>
@@ -76,7 +84,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Código: <span style="color: red;">*</span></label>
-                                    <input autofocus="" type="text" name="identiticacion"  class="form-control" required="">
+                                    <input autofocus="" type="text" name="codigo" id="codigo"  class="form-control" required="">
                                 </div>
                             </div>
                         </div>
@@ -84,7 +92,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Nombres:  <span style="color: red;">*</span></label>
-                                    <input type="text" name="nombre" class="form-control" required="">
+                                    <input type="text" name="nombre" minlength="3" maxlength="50" onkeypress="return soloLetras(event)"   class="form-control" required="">
                                 </div>
                             </div>
                         </div>
@@ -92,7 +100,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Apellidos:  <span style="color: red;">*</span></label>
-                                    <input type="text" name="apellido" class="form-control" required="">
+                                    <input type="text" name="apellido" minlength="3" maxlength="50" onkeypress="return soloLetras(event)" class="form-control" required="">
                                 </div>
                             </div>
                         </div>
@@ -123,7 +131,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Fecha de Elaboración:  <span style="color: red;">*</span></label>
-                                    <input type="date" name="fechan" value="<%= currentDate%>" class="form-control" required="">
+                                    <input type="date" name="fecha" value="<%= currentDate%>" class="form-control" required="">
 
                                 </div>
                             </div>
@@ -149,7 +157,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Direcci&oacute;n: <span style="color: red;">*</span></label>
-                                    <textarea name="direccion" class="form-control no-resize" required="" ></textarea>
+                                    <textarea name="direccion" minlength="3" maxlength="50"   onpaste="return false"  class="form-control no-resize" required="" ></textarea>
                                 </div>
                             </div>
                         </div>                   
@@ -196,7 +204,7 @@
                             <div class="input-group">
                                 <div class="form-line">
                                     <label class="control-label">Descuento: $ <span style="color: red;">*</span></label>
-                                    <input autofocus="" type="text" readonly="" name="descuento" id="descuento" value="0.0"  min="0" data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'placeholder': '0'" placeholder="0.00"  class="form-control precios" required="">
+                                    <input autofocus="" type="text" readonly="" name="descuento" id="descuento" value="0"  data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'placeholder': '0'" placeholder="0.00"  class="form-control precios">
                                 </div>
                             </div>
                         </div>

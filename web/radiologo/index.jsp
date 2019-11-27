@@ -48,7 +48,7 @@
                                         <th>ID</th>
                                         <th>Nombres</th>
                                         <th>Apellidos</th>
-                                        <th width="18%" >Acciones</th>
+                                        <th width="8%" >Acciones</th>
                                     </tr>
                                 </thead>
 
@@ -64,8 +64,7 @@
                                         <td><%=  c.getApellido()%></td>
 
                                         <td>
-                                            <a type="button" class="btn btn-info waves-effect" onclick="" data-toggle="modal" data-target="#modalm"><i class="fa fa-edit"></i>&nbsp; Modificar</a>
-                                            <a href="../eliminar.do?id=" onclick="return confirm('¿Está seguro de eliminar este registro?');" class="btn btn-danger waves-effect"><i class="fa fa-trash-o"></i>&nbsp; Eliminar</a>
+                                            <a href="../GuardarRadiologo?id=<%=  c.getId()%>" onclick="return confirm('¿Está seguro de eliminar este registro?');" class="btn btn-danger waves-effect"><i class="fa fa-trash-o"></i>&nbsp; Eliminar</a>
 
                                         </td>
                                     </tr>
@@ -100,60 +99,6 @@
 
 </script>
 
-<%     if (request.getParameter("g") != null) { //Verificar que el parametro venga lleno
-        if (request.getParameter("g").equals("exito")) {//parametro para mostrar el mensaje correspondiente
-
-%>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-success">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Datos Almacenados Correctamente</div>');
-
-        window.setTimeout(function () {
-            $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-
-<%}else if (request.getParameter("g").equals("vacio")) {
-        %>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-warning">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Datos Vacios. Complete</div>');
-
-        window.setTimeout(function () {
-            $(".alert-success").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-   <% }else {%>
-<script>
-    $(document).ready(function () {
-        $('#add-brand-messages').html('<div class="alert alert-danger">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong><i class="fa fa-check"></i></strong> Ha ocurrido un error, si este persiste comuniquese con los desarrolladores</div>');
-
-        window.setTimeout(function () {
-            $(".alert-danger").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 4000); // /.alert
-    });
-</script>
-
-<%
-        }
-    }
-%>
 
 <%@include file="./modales.jsp" %>
 <%@include file="../principal/pie.jsp" %>

@@ -8,6 +8,10 @@
         <servlet-name>GuardarRadiologo</servlet-name>
         <servlet-class>controlador.GuardarRadiologo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuardarPaciente</servlet-name>
+        <servlet-class>controlador.GuardarPaciente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuardarRadiografia</servlet-name>
         <url-pattern>/GuardarRadiografia</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>GuardarRadiologo</servlet-name>
         <url-pattern>/GuardarRadiologo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarPaciente</servlet-name>
+        <url-pattern>/GuardarPaciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

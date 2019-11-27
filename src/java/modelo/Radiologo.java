@@ -92,7 +92,7 @@ public class Radiologo extends Conexion{
 
         try {
 
-            String miQuery = "select * from tb_radiologo order by radiologo_id asc";
+            String miQuery = "select * from tb_radiologo order by radiologo_id desc";
             state = getConexion().createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
@@ -130,7 +130,23 @@ public class Radiologo extends Conexion{
 
         return registros;
     }
+     public boolean eliminarDatos() {
 
+        try {
+            String miQuery = "delete from tb_radiologo where radiologo_id='" + getId() + "'";
+            int estado = 0;
+            state = getConexion().createStatement();
+            estado = state.executeUpdate(miQuery);
+            if (estado == 1) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
     
     
 }

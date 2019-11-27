@@ -24,7 +24,7 @@
                                 <div class="input-group">
                                     <div class="form-line">
                                         <label class="control-label">Nombre: <span style="color:red">*</span></label>
-                                        <input autofocus="" type="text" name="nombre" minlength="3" maxlength="50"  class="form-control" required="">
+                                        <input autofocus="" type="text" onkeypress="return soloLetras(event)" name="nombre" minlength="3" maxlength="50"  class="form-control" required="">
                                     </div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                               <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <label class="control-label">Precio: <span style="color:red">*</span></label>
+                                        <label class="control-label">Precio: $ <span style="color:red">*</span></label>
                                         <input type="text" min="0" name="precio" data-inputmask="'alias': 'numeric', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'placeholder': '0'" placeholder="0.00"  class="form-control precios" required="">
                                     </div>
                                 </div>

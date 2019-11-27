@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -171,7 +173,7 @@ public class Paciente extends Conexion {
             result = state.executeQuery(miQuery);
             while (result.next()) {
 
-                registros.add(new Paciente(result.getInt("pac_id"), result.getString("pac_codigo"), result.getString("pac_nombre"), result.getString("pac_apellido"), result.getString("pac_genero"), result.getString("pac_direccion"),result.getString("pac_fecha"),result.getString("pac_referencia"),result.getDouble("pac_total_pago"),result.getDouble("pac_descuento"),result.getInt("radiografia_id"),result.getInt("radiologo_id"),result.getDouble("precio_rad")));
+                registros.add(new Paciente(result.getInt("pac_id"), result.getString("pac_codigo"), result.getString("pac_nombre"), result.getString("pac_apellido"), result.getString("pac_genero"), result.getString("pac_direccion"), result.getString("pac_fecha"), result.getString("pac_referencia"), result.getDouble("pac_total_pago"), result.getDouble("pac_descuento"), result.getInt("radiografia_id"), result.getInt("radiologo_id"), result.getDouble("precio_rad")));
 
             }
 
@@ -187,12 +189,12 @@ public class Paciente extends Conexion {
 
         try {
 
-            String miQuery = "select tb_paciente.*,tb_radiologo.*,tb_tipo_radiografia.* from tb_paciente inner join tb_radiologo on tb_paciente.radiologo_id=tb_radiologo.radiologo_id inner join tb_tipo_radiografia on tb_paciente.radiografia_id=tb_tipo_radiografia.tipo_id where pac_id="+id_;
+            String miQuery = "select tb_paciente.*,tb_radiologo.*,tb_tipo_radiografia.* from tb_paciente inner join tb_radiologo on tb_paciente.radiologo_id=tb_radiologo.radiologo_id inner join tb_tipo_radiografia on tb_paciente.radiografia_id=tb_tipo_radiografia.tipo_id where pac_id=" + id_;
             state = getConexion().createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
 
-                registros.add(new Paciente(result.getInt("pac_id"), result.getString("pac_codigo"), result.getString("pac_nombre"), result.getString("pac_apellido"), result.getString("pac_genero"), result.getString("pac_direccion"),result.getString("pac_fecha"),result.getString("pac_referencia"),result.getDouble("pac_total_pago"),result.getDouble("pac_descuento"),result.getInt("radiografia_id"),result.getInt("radiologo_id"),result.getDouble("precio_rad")));
+                registros.add(new Paciente(result.getInt("pac_id"), result.getString("pac_codigo"), result.getString("pac_nombre"), result.getString("pac_apellido"), result.getString("pac_genero"), result.getString("pac_direccion"), result.getString("pac_fecha"), result.getString("pac_referencia"), result.getDouble("pac_total_pago"), result.getDouble("pac_descuento"), result.getInt("radiografia_id"), result.getInt("radiologo_id"), result.getDouble("precio_rad")));
 
             }
 
@@ -203,4 +205,54 @@ public class Paciente extends Conexion {
         return registros;
     }
 
+    //Metodos de la clase guardar, mostrar, eliminar y modificar
+    public boolean insertardatos() {
+
+        try {
+            String sql = "insert into tb_paciente(pac_codigo,pac_nombre,pac_apellido,pac_genero,pac_direccion,pac_fecha,pac_referencia,pac_total_pago,pac_descuento,radiografia_id,radiologo_id,precio_rad)  values(?,?,?,?,?,?,?,?,?,?,?,?);";
+            PreparedStatement statement = getConexion().prepareStatement(sql);
+
+            statement.setString(1, getCodigo());
+            statement.setString(2, getNombre());
+            statement.setString(3, getApellido());
+            statement.setString(4, getGenero());
+            statement.setString(5, getDireccion());
+            statement.setDate(6, Date.valueOf(getFecha()));
+            statement.setString(7, getReferencia());
+            statement.setDouble(8, getTotal());
+            statement.setDouble(9, getDescuento());
+            statement.setInt(10, getRadiografia_id());
+            statement.setInt(11, getRadiologo_id());
+            statement.setDouble(12, getPrecioActual_rad());
+
+            boolean estado = statement.executeUpdate() > 0;
+            statement.close();
+            getConexion().close();
+            return estado;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+    
+     public boolean eliminarDatos() {
+
+        try {
+            String miQuery = "delete from tb_paciente where pac_id='" + getId() + "'";
+            int estado = 0;
+            state = getConexion().createStatement();
+            estado = state.executeUpdate(miQuery);
+            if (estado == 1) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+    
 }
