@@ -14,5 +14,6 @@
     <body>
         <h1>LOGIN</h1>
         <a href="principal/">Menu Principal- Nuevo</a>
+         <h1>BIENVENIDOS</h1>
     </body>
 </html>
