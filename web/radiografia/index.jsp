@@ -9,10 +9,46 @@
 <title>Mantenimiento Radiografías</title>
 <%@include file="../principal/encabezado.jsp" %>
 
-<%  Radiografia consultar = new Radiografia();
+<%
+     
+        Conexion con = new Conexion();
+        
+if (con.getConexion()==null) {
+    %>
+ 
+     <script>;
+        var pBar = document.getElementById("p");
+         var updateProgress = function(value)
+         {
+            pBar.value = value;
+            pBar.getElementByTagName("span")[0].innerHTML = Math.floor((100 / 70) * value);
+         }
+       </script>
+    
+
+    <hr>
+       <br><center><h1 style="font-size:300%"><p><font color="red">¡No se puede conectar con la base de datos!</font></p></h1>;
+       <embed src='../imagenes/base.png' heigth='80' width='80'></embed><br><br><progress id='p' max='70'> <span>0</span>%</progress><br>;
+       <hr width='80%' color='black' size='8' /></center>;
+       <p>Posibles causas:</p>
+        <ol>
+            <li>Ha perdido conexión con el servidor. </li>
+            <li>Base de datos no encontrada. </li>
+            <li>Conexión expirada. </li>
+            <li>Clave o usuario incorrectos. </li>
+            <li>La base de datos fue removida. </li>
+        </ol>
+
+       <center><h2 style='color:green'>Debes consultar a soporte t&eacute;cnico.</h2></center>
+    
+    <%
+}else{
+    
+    Radiografia consult = new Radiografia();
+
     ArrayList<Radiografia> registros = new ArrayList();
 
-    registros = consultar.consultarRegistros();
+    registros = consult.consultarRegistros();
 
 %>
 
@@ -102,4 +138,6 @@
 
 <%@include file="./modales.jsp" %>
 <%@include file="../principal/pie.jsp" %>
+
+<% } %>
 

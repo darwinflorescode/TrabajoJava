@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class Conexion {
        
     private String username = "postgres";
-    private String password = "1234";
+    private String password = "12345/-";
     private String host = "localhost";
     private String port = "5432";
     private String database = "db_radiografia";

@@ -12,7 +12,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Carrusel de imagenes
+                    Carrusel de imagenes   
                 </h2>
             </div>
             <div class="body">

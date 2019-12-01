@@ -4,6 +4,7 @@
     Author     : DARWINFLORES
 --%>
 
+<%@page import="modelo.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,6 +51,7 @@
         
     </head>
     <body style="background-color: #fff;">
+    
         <nav class="navbar navbar-default navbar-fixed" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->

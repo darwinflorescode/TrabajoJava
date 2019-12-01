@@ -4,7 +4,7 @@
     Author     : DARWINFLORES
 --%>
 
-<%     if (request.getParameter("g") != null) { //Verificar que el parametro venga lleno
+<%     if (request.getParameter("g") != null && !request.getParameter("g").isEmpty()) { //Verificar que el parametro venga lleno
         if (request.getParameter("g").equals("exito")) {//parametro para mostrar el mensaje correspondiente
 
 %>
@@ -115,4 +115,3 @@
 
 </body>
 </html>
-
