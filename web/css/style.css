@@ -4104,17 +4104,17 @@ section.content {
 .mensaje_modal h3{
     text-align: center;
     font-family: 'Ubuntu';
-	font-size: 20px;
-	font-weight: 400;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .mensaje_modal h3:after{
     content: '';
-	display: block;
-	width: 100%;
-	height: 1px;
-	background: #C5C5C5;
-	margin: 10px 0px 15px;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #C5C5C5;
+    margin: 10px 0px 15px;
 }
 
 .mensaje_modal p{
@@ -4132,15 +4132,15 @@ section.content {
 
 #btnClose{
     display: inline-block;
-	padding: 3px 10px;
-	margin-top: 10px;
+    padding: 3px 10px;
+    margin-top: 10px;
 
-	background: #E25151;
-	color: #fff;
-	border: 2px solid #B14141;
-	cursor: pointer;
+    background: #E25151;
+    color: #fff;
+    border: 2px solid #B14141;
+    cursor: pointer;
 
-	float: right;
+    float: right;
 }
 
 
@@ -8150,3 +8150,36 @@ footer+.footer-bar>p {
 .powered-by {
     float: right
 }
+
+
+/* Overlay */
+#ocultar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    opacity: 0.2;
+    z-index: 1000;
+    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+#espere {
+    border:1px solid #2a67ac;
+    padding: 10px 10px 10px 60px;
+    width: 400px;
+    height: 100px;
+    background: rgb( 255, 255, 255) url('../imagenes/FhHRx-Spinner.gif') 10px 50% no-repeat;
+    position: fixed;
+    display: none;
+    z-index: 5000;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%)
+}
+
+#espere h4 { margin: 3px 0 0 0; padding: 0; color: #d80; }

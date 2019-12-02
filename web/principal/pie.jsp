@@ -4,6 +4,9 @@
     Author     : DARWINFLORES
 --%>
 
+
+
+
 <%     if (request.getParameter("g") != null && !request.getParameter("g").isEmpty()) { //Verificar que el parametro venga lleno
         if (request.getParameter("g").equals("exito")) {//parametro para mostrar el mensaje correspondiente
 
@@ -23,6 +26,11 @@
 </script>
 
 
+
+  
+
+
+
 <%}else if (request.getParameter("g").equals("eliminado")) {
         %>
 <script>
@@ -30,6 +38,7 @@
         $('#add-brand-messages').html('<div class="alert alert-danger">' +
                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
                 '<strong><i class="fa fa-check"></i></strong> Datos Eliminados Correctamente</div>');
+        
 
         window.setTimeout(function () {
             $(".alert-danger").fadeTo(500, 0).slideUp(500, function () {
@@ -91,6 +100,7 @@
       
  
     </script>
+   
 <div class="footer-wrap">
     <div class="footer-bar">
         <p>

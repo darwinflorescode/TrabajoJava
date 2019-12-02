@@ -26,8 +26,7 @@
         <link href="../css/stilos.css" rel="stylesheet">
         <!-- Jquery Core Js -->
        
-        <script src="../js/jquery.min.js">
-        </script>
+        <script src="../bootstrap/js/jquery-1.11.2.min.js" type="text/javascript"></script>
         <!-- Waves Effect Plugin Js -->
         <script src="../js/waves.js">
         </script>
@@ -48,6 +47,7 @@
         </script>
         <script src="../js/jquery.inputmask.bundle.min.js">
         </script>
+        
         
     </head>
     <body style="background-color: #fff;">
@@ -131,3 +131,11 @@
         <br>
         <br>
         <br>
+        
+        <div id="ocultar"></div>
+        <div id="espere">
+    <h4>Espere, por favor.</h4>
+    <p>Por favor, espere... ¡Es solo un momento!</p>
+</div>
+   
+     

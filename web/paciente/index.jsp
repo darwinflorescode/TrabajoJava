@@ -141,11 +141,13 @@ if (con.getConexion()==null) {
             type: 'GET',
             url: 'detalles.jsp?id_paciente=' + id_paciente + "&id_radiologo=" + id_radiologo + "&id_radiografia=" + id_radiologia,
             beforeSend: function (objeto) {
-                $('#loader').html('<img src="../imagenes/cargando.gif"> Cargando...');
+               // $('#loader').html('<img src="../imagenes/cargando.gif"> Cargando...');
+                $('#ocultar, #espere').show();
             },
             success: function (data) {
                 $(".vertabla").html(data).fadeIn('slow');
                 $('#loader').html('');
+                 $('#ocultar, #espere').hide();
 
             }
         });
