@@ -102,6 +102,7 @@ public class GuardarPaciente extends HttpServlet {
         try {
             descuento = Double.parseDouble(request.getParameter("descuento"));
         } catch (Exception e) {
+            System.out.println("Error"+e.getMessage());
         }
             
         total_pago = Double.parseDouble(request.getParameter("totalpago"));

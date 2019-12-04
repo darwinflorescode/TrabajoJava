@@ -112,7 +112,7 @@
             </span>
             <span class="powered-by">
 
-                <a href="#">
+                <a href="../">
                     <b><span class="fa fa-copyright"></span> UNIVERSIDAD DE EL SALVADOR - <% java.util.Calendar fecha = java.util.Calendar.getInstance();
                         out.println(fecha.get(java.util.Calendar.YEAR));%>  - Desarrolladores</b>
                 </a>

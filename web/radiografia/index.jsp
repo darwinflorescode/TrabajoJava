@@ -137,7 +137,7 @@ if (con.getConexion()==null) {
 
 
 <%@include file="./modales.jsp" %>
-<%@include file="../principal/pie.jsp" %>
+
 
 <% } %>
-
+<%@include file="../principal/pie.jsp" %>

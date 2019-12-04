@@ -14,9 +14,10 @@
         Conexion con = new Conexion();
         
 if (con.getConexion()==null) {
+    
     %>
- 
-     <script>;
+    
+    <script>
         var pBar = document.getElementById("p");
          var updateProgress = function(value)
          {
@@ -40,17 +41,21 @@ if (con.getConexion()==null) {
         </ol>
 
        <center><h2 style='color:green'>Debes consultar a soporte t&eacute;cnico.</h2></center>
+
+
     
     <%
+     
 }else{
-    Paciente consultar = new Paciente();
+    
+
+Paciente consultar = new Paciente();
     ArrayList<Paciente> registros = new ArrayList();
 
     registros = consultar.consultarRegistros();
-
-%>
-
-<section class="container-fluid">
+    %>
+ 
+     <section class="container-fluid">
     <div class="container-fluid">
 
         <!-- Basic Examples -->
@@ -75,7 +80,7 @@ if (con.getConexion()==null) {
                         </div>
 
                         <div class="table-responsive">
-                            <table id="tb_radiografia" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <table id="tb_paciente" class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead class="bg-green">
                                     <tr>
                                         <th>ID</th>
@@ -210,17 +215,18 @@ if (con.getConexion()==null) {
     $(document).ready(function () {
 
         //datatables
-        table = $('#tb_radiografia').DataTable({
+        table = $('#tb_paciente').DataTable({
             "pageLength": 5,
             "order": [[0, "desc"]]
         });
     });
 </script>
 
+
+
+
 <%@include file="./modales.jsp" %>
 <%@include file="../principal/pie.jsp" %>
 
+<% } %>
 
-<%
-}
-%>

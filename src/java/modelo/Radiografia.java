@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,14 +18,14 @@ import java.util.logging.Logger;
  *
  * @author DARWINFLORES
  */
-public class Radiografia extends Conexion {
+public class Radiografia {
 
     //Declaracion de variables
     private int _id;
     private String _nombre;
     private double _precio;
 
-      Statement state;
+    Statement state;
     ResultSet result;
     //Constructores
 
@@ -64,18 +65,18 @@ public class Radiografia extends Conexion {
 
     //Metodos de la clase guardar, mostrar, eliminar y modificar
     public boolean insertardatos() {
-
+        Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
             String sql = "insert into tb_tipo_radiografia(tipo_nombre,tipo_precio)  values(?,?);";
-            PreparedStatement statement = getConexion().prepareStatement(sql);
+            PreparedStatement statement = cone.prepareStatement(sql);
 
-           
             statement.setString(1, getNombre());
             statement.setDouble(2, getPrecio());
 
             boolean estado = statement.executeUpdate() > 0;
             statement.close();
-            getConexion().close();
+            cone.close();
             return estado;
 
         } catch (SQLException ex) {
@@ -84,21 +85,23 @@ public class Radiografia extends Conexion {
 
         return false;
     }
-    
-     public ArrayList<Radiografia> consultarRegistros() {
-        ArrayList<Radiografia> registros = new ArrayList();
 
+    public ArrayList<Radiografia> consultarRegistros() {
+        ArrayList<Radiografia> registros = new ArrayList();
+        Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
 
             String miQuery = "select * from tb_tipo_radiografia order by tipo_id desc";
-            state = getConexion().createStatement();
+            state = cone.createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
-                
-                
-                registros.add(new Radiografia(result.getInt("tipo_id"),result.getString("tipo_nombre"), result.getDouble("tipo_precio")));
+
+                registros.add(new Radiografia(result.getInt("tipo_id"), result.getString("tipo_nombre"), result.getDouble("tipo_precio")));
 
             }
+            state.close();
+            cone.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,20 +109,23 @@ public class Radiografia extends Conexion {
 
         return registros;
     }
-     public ArrayList<Radiografia> consultarRegistrosPorId(int id_) {
-        ArrayList<Radiografia> registros = new ArrayList();
 
+    public ArrayList<Radiografia> consultarRegistrosPorId(int id_) {
+        ArrayList<Radiografia> registros = new ArrayList();
+        Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
 
-            String miQuery = "select * from tb_tipo_radiografia where tipo_id="+id_;
-            state = getConexion().createStatement();
+            String miQuery = "select * from tb_tipo_radiografia where tipo_id=" + id_;
+            state = cone.createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
-                
-                
-                registros.add(new Radiografia(result.getInt("tipo_id"),result.getString("tipo_nombre"), result.getDouble("tipo_precio")));
+
+                registros.add(new Radiografia(result.getInt("tipo_id"), result.getString("tipo_nombre"), result.getDouble("tipo_precio")));
 
             }
+            state.close();
+            cone.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,18 +133,21 @@ public class Radiografia extends Conexion {
 
         return registros;
     }
-     
-        public boolean eliminarDatos() {
 
+    public boolean eliminarDatos() {
+        Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
             String miQuery = "delete from tb_tipo_radiografia where tipo_id='" + getId() + "'";
             int estado = 0;
-            state = getConexion().createStatement();
+            state = cone.createStatement();
             estado = state.executeUpdate(miQuery);
             if (estado == 1) {
                 return true;
             }
 
+            state.close();
+            cone.close();
         } catch (SQLException ex) {
             Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
         }

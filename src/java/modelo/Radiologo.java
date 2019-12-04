@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author DARWINFLORES
  */
-public class Radiologo extends Conexion{
+public class Radiologo{
     //Declaracion de variables
     private int _id;
     private String _nombre;
@@ -66,10 +67,11 @@ public class Radiologo extends Conexion{
 
 //Metodos de la clase guardar, mostrar, eliminar y modificar
     public boolean insertardatos() {
-
+Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
             String sql = "insert into tb_radiologo(radiologo_nombre,radiologo_apellido)  values(?,?);";
-            PreparedStatement statement = getConexion().prepareStatement(sql);
+            PreparedStatement statement = cone.prepareStatement(sql);
 
            
             statement.setString(1, getNombre());
@@ -77,7 +79,7 @@ public class Radiologo extends Conexion{
 
             boolean estado = statement.executeUpdate() > 0;
             statement.close();
-            getConexion().close();
+            cone.close();
             return estado;
 
         } catch (SQLException ex) {
@@ -89,11 +91,12 @@ public class Radiologo extends Conexion{
     
      public ArrayList<Radiologo> consultarRegistros() { //Mostrar todos los datos
         ArrayList<Radiologo> registros = new ArrayList();
-
+Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
 
             String miQuery = "select * from tb_radiologo order by radiologo_id desc";
-            state = getConexion().createStatement();
+            state = cone.createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
                 
@@ -101,7 +104,8 @@ public class Radiologo extends Conexion{
                 registros.add(new Radiologo(result.getInt("radiologo_id"),result.getString("radiologo_nombre"), result.getString("radiologo_apellido")));
 
             }
-
+ state.close();
+            cone.close();
         } catch (SQLException ex) {
             Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,11 +115,12 @@ public class Radiologo extends Conexion{
 
          public ArrayList<Radiologo> consultarRegistrosPorId(int id_) { //Mostrar todos los datos pero por busqueda Id
         ArrayList<Radiologo> registros = new ArrayList();
-
+Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
 
             String miQuery = "select * from tb_radiologo where radiologo_id="+id_;
-            state = getConexion().createStatement();
+            state = cone.createStatement();
             result = state.executeQuery(miQuery);
             while (result.next()) {
                 
@@ -131,16 +136,18 @@ public class Radiologo extends Conexion{
         return registros;
     }
      public boolean eliminarDatos() {
-
+Conexion conectar = new Conexion();
+        Connection cone = conectar.getConexion();
         try {
             String miQuery = "delete from tb_radiologo where radiologo_id='" + getId() + "'";
             int estado = 0;
-            state = getConexion().createStatement();
+            state = cone.createStatement();
             estado = state.executeUpdate(miQuery);
             if (estado == 1) {
                 return true;
             }
-
+ state.close();
+            cone.close();
         } catch (SQLException ex) {
             Logger.getLogger(Radiografia.class.getName()).log(Level.SEVERE, null, ex);
         }

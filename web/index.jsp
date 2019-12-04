@@ -72,6 +72,18 @@ position: absolute;
            <font  SIZE=5 FACE="roman">Pedro Antonio Rivas Castillo RC17068</font>
            </font>
           </div>
+         <br>
+         <table width="30%" style="border: solid #03A9F4" border='1'>
+             <thead>
+             <th colspan="3">VERSIONES DE SOFTWARE</th>
+             </thead>
+             <tbody>
+                 
+             <td><b>Netbeans</b></td>
+             <td>8.2</td>
+             </tbody>
+             
+         </table>
          
     </body>
 </html>
